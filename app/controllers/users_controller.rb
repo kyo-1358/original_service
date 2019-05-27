@@ -2,8 +2,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
   before_action :require_user_logged_in, only: [:index, :show]
 
-
-
   # GET /users/1
   # GET /users/1.json
   
