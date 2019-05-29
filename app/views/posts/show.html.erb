@@ -11,13 +11,13 @@
 </p>
 
 <p>
-  <strong>Post comment:</strong>
-  <%= @post.post_comment %>
+  <strong>Image:</strong>
+  <%= image_tag @post.image.url %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @post.user %>
+  <strong>Post comment:</strong>
+  <%= @post.post_comment %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

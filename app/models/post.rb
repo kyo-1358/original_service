@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
-  belongs_to :user
+  mount_uploader :image, ImageUploader
+  belongs_to :user, optional: true
   
   validates :title, presence: true, length: { maximum: 20 }
   validates :horse_name, presence: true, length: { maximum: 20 }

@@ -6,14 +6,17 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto"></ul>
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+<%= link_to new_post_path, class: 'nav-link' do %>
+<i class="far fa-images fa-2x"></i>写真投稿
+<% end %>
+</li>
+      </ul>
       <ul class="navbar-nav">
         
 <% if logged_in? %>
 
-<li class="nav-item">
-<%= link_to '写真投稿', new_post_path, class: 'nav-link' %>
-</li>
 
        <li class="nav-item">
 <%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %>
