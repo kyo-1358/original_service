@@ -7,7 +7,7 @@ class User < ApplicationRecord
                     
   has_secure_password
   has_many :posts
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :fav_posts, through: :favorites, source: :post
   
   def like(post)

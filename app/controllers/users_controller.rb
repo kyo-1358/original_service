@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   end
   
   def show
+    @user = User.find(params[:id])
+    @posts = current_user.posts.order(id: :desc).page(params[:page])
+    counts(@user)
   end
 
   # GET /users/new
@@ -30,6 +33,12 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
       end
+  end
+  
+  def likes
+    @user = User.find(params[:id])
+    @fav_posts = @user.fav_posts.page(params[:page])
+    counts(@user)
   end
 
 

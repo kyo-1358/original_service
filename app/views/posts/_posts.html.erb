@@ -1,0 +1,10 @@
+<ul class="list-inline">
+
+<% posts.each do |post| %>
+
+<%= link_to image_tag(post.image.thumb.url), post_path(post.id) %>
+
+<% end %>
+
+<%= paginate posts %>
+</ul>
