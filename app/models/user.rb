@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def like?(post)
     self.fav_posts.include?(post)
   end
+  
+  def feed_posts
+    Post.where(user_id: self.id)
+  end
 end

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = current_user.posts.order(id: :desc).page(params[:page])
+    @posts = current_user.feed_posts.order(id: :desc).page(params[:page])
     counts(@user)
   end
 
