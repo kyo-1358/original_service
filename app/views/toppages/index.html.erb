@@ -4,19 +4,47 @@
 <%= current_user.name %>
 </p>
 
-<table>
+<h3>お気に入りランキング</h3>
+<div class="row row-eq-height">
+<% @all_ranks.each.with_index(1) do |post, i| %>
+<div class="col-md-2">
+<div class="card-deck">
+  <div class="card">
+    <%= "第#{i}位" %>
+<%= image_tag post.image.thumb.url, class:'card-img-top', class:'img-thumbnail' %>
+    <div class="card-body">
+      <%= link_to 'Show', post_path(post) %>
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>
+</div>
 
- 
-    <% @all_ranks.each.with_index(1) do |post, i| %>
-        <td><%= "第#{i}位" %></td>
-        <td><%= image_tag post.image.thumb.url %></td>
-        <td><%= link_to 'Show', post_path(post) %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<br>
+<br>
 
-    <% end %>
-  </tbody>
-</table>
+<h3>新着</h3>
+<div class="row row-eq-height">
+<% @sinchaku_posts.each do |post| %>
+
+<div class="col-md-2">
+<div class="card-deck">
+  <div class="card">
+<%= image_tag post.image.thumb.url, class:'card-img-top', class:'img-thumbnail' %>
+    <div class="card-body">
+      <%= link_to 'Show', post_path(post) %>
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>
+</div>
+
 
 <% else %>
 
