@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_post, only: [:show, :edit, :update]
+  before_action :correct_user, only: [:destroy]
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
+    @sinchaku_posts = Post.order(created_at: :desc)
   end
 
   # GET /posts/1
@@ -70,5 +71,12 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :horse_name, :post_comment, :user_id, :image)
+    end
+    
+    def correct_user
+      @post = current_user.posts.find_by(id: params[:id])
+      unless @post
+        redirect_to root_url
+      end
     end
 end
